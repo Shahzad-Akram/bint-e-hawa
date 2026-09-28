@@ -4,6 +4,11 @@ import {
   BriefcaseBusiness, Building2, Flower2, GraduationCap, HeartHandshake,
   MapPin, Menu, PackageOpen, ShieldCheck, Stethoscope, Users, X,
 } from 'lucide-react'
+import financeSecretaryImage from './assets/Finance Secretary.jpeg'
+import generalSecretaryImage from './assets/General Secretary.jpeg'
+import jointSecretaryImage from './assets/Joint Secretary.jpeg'
+import presidentImage from './assets/NGO President.jpeg'
+import pressSecretaryImage from './assets/Press Secretary.jpeg'
 import './ngo.css'
 
 const programs = [
@@ -64,6 +69,14 @@ const programs = [
   },
 ]
 
+const teamMembers = [
+  { name: 'Faiza Faisal', designation: 'NGO President', image: presidentImage },
+  { name: 'Muhammad Taha', designation: 'General Secretary', image: generalSecretaryImage },
+  { name: 'Ali Ghafir', designation: 'Joint Secretary', image: jointSecretaryImage },
+  { name: 'Asghar Mehmood', designation: 'Finance Secretary', image: financeSecretaryImage },
+  { name: 'Syed Tahir Ali Shah', designation: 'Press Secretary', image: pressSecretaryImage },
+]
+
 function App() {
   const [menuOpen, setMenuOpen] = useState(false)
   const closeMenu = () => setMenuOpen(false)
@@ -94,6 +107,7 @@ function App() {
           <a href="#about" onClick={closeMenu}>About</a>
           <a href="#programs" onClick={closeMenu}>Programs</a>
           <a href="#footprint" onClick={closeMenu}>Our footprint</a>
+          <a href="#team" onClick={closeMenu}>Our team</a>
           <a className="nav-cta" href="#vision" onClick={closeMenu}>Our vision <ArrowUpRight size={17} /></a>
         </nav>
         <button className="menu-button" type="button" aria-label={menuOpen ? 'Close menu' : 'Open menu'} aria-expanded={menuOpen} onClick={() => setMenuOpen((open) => !open)}>
@@ -169,6 +183,28 @@ function App() {
         </div>
       </section>
 
+      <section className="team" id="team">
+        <div className="team-heading section reveal" data-reveal>
+          <div>
+            <p className="eyebrow">People behind the mission</p>
+            <h2>Meet our leadership team.</h2>
+          </div>
+          <p>Our team brings together community insight, responsible leadership, and a shared commitment to dignified service.</p>
+        </div>
+        <div className="team-grid section">
+          {teamMembers.map((member, index) => (
+            <article className="team-member reveal" data-reveal style={{ '--reveal-delay': `${index * 90}ms` }} key={member.name}>
+              <div className="team-photo">
+                <img src={member.image} alt={`${member.designation} portrait`} />
+                <span>{String(index + 1).padStart(2, '0')}</span>
+              </div>
+              <h3>{member.name}</h3>
+              <p>{member.designation}</p>
+            </article>
+          ))}
+        </div>
+      </section>
+
       <section className="vision" id="vision">
         <div className="vision-inner section">
           <div className="vision-icon reveal reveal-scale" data-reveal><Building2 size={35} /></div>
@@ -186,10 +222,8 @@ function App() {
             <a className="brand" href="#top"><span className="brand-mark"><Flower2 size={21} /></span><span>Bint-e-Hawa <small>Welfare Organization</small></span></a>
             <p>Empowering communities. Building self-reliance.</p>
           </div>
-          <div className="footer-links"><strong>Explore</strong><a href="#about">About us</a><a href="#programs">Programs</a><a href="#footprint">Our footprint</a><a href="#vision">Vision</a></div>
-          <div className="footer-registration"><strong>Government Registration</strong><span>DO/SWWD&amp;BM/RWP/2012-0183</span><span>Established 2012</span><span>Government of Pakistan</span><span>Phone: +92 333 4578107</span><span>Phone: +92 336 5374960</span><span>Address: Sher Zaman Colony, Lane no 6, Rawalpindi, Pakistan</span></div>
-          
-          
+          <div className="footer-links"><strong>Explore</strong><a href="#about">About us</a><a href="#programs">Programs</a><a href="#footprint">Our footprint</a><a href="#team">Our team</a><a href="#vision">Vision</a></div>
+          <div className="footer-registration"><strong>Government Registration</strong><span>DO/SWWD&amp;BM/RWP/2012-0183</span><span>Established 2012</span><span>Government of Pakistan</span></div>
         </div>
         <div className="footer-bottom section"><span>© 2026 Bint-e-Hawa Welfare Organization</span><span>Non-governmental / Non-profit</span></div>
       </footer>
