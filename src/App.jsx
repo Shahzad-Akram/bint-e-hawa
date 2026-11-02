@@ -6,6 +6,17 @@ import {
 } from 'lucide-react'
 import financeSecretaryImage from './assets/Finance Secretary.jpeg'
 import generalSecretaryImage from './assets/General Secretary.jpeg'
+import institutePhoto1 from './assets/IMG_3228.jpg'
+import institutePhoto2 from './assets/IMG_3229.jpg'
+import institutePhoto3 from './assets/IMG_3230.jpg'
+import institutePhoto4 from './assets/IMG_3231.jpg'
+import institutePhoto5 from './assets/IMG_3235.jpg'
+import institutePhoto6 from './assets/IMG_3236.jpg'
+import institutePhoto7 from './assets/IMG_3237.jpg'
+import institutePhoto8 from './assets/IMG_3238.jpg'
+import instituteVideo1 from './assets/IMG_3240.mp4'
+import instituteVideo2 from './assets/IMG_3241.mp4'
+import instituteVideo3 from './assets/IMG_3242.mp4'
 import jointSecretaryImage from './assets/Joint Secretary.jpeg'
 import presidentImage from './assets/NGO President.jpeg'
 import pressSecretaryImage from './assets/Press Secretary.jpeg'
@@ -77,6 +88,23 @@ const teamMembers = [
   { name: 'Syed Tahir Ali Shah', designation: 'Press Secretary', image: pressSecretaryImage },
 ]
 
+const institutePhotos = [
+  { src: institutePhoto1, alt: 'Women seated in a classroom during an institute learning session', caption: 'Learning together' },
+  { src: institutePhoto2, alt: 'Women practicing tailoring and handwork in a vocational class', caption: 'Skills in practice' },
+  { src: institutePhoto3, alt: 'Students working at computers in the institute technology lab', caption: 'Digital confidence' },
+  { src: institutePhoto4, alt: 'Students gathered in the institute courtyard for orientation', caption: 'A welcoming community' },
+  { src: institutePhoto5, alt: 'Entrance of Bint-e-Hawa Welfare Organization institute', caption: 'Our institute' },
+  { src: institutePhoto6, alt: 'Institute staff meeting with women for guidance and support', caption: 'Personal guidance' },
+  { src: institutePhoto7, alt: 'Students assembled in the institute courtyard', caption: 'Growing together' },
+  { src: institutePhoto8, alt: 'Students attending an institute assembly and briefing', caption: 'Purpose in every day' },
+]
+
+const instituteVideos = [
+  { src: instituteVideo1, poster: institutePhoto3, title: 'Learning in action' },
+  { src: instituteVideo2, poster: institutePhoto2, title: 'Inside our skills program' },
+  { src: instituteVideo3, poster: institutePhoto4, title: 'Life at the institute' },
+]
+
 function App() {
   const [menuOpen, setMenuOpen] = useState(false)
   const closeMenu = () => setMenuOpen(false)
@@ -107,6 +135,7 @@ function App() {
           <a href="#about" onClick={closeMenu}>About</a>
           <a href="#programs" onClick={closeMenu}>Programs</a>
           <a href="#footprint" onClick={closeMenu}>Our footprint</a>
+          <a href="#gallery" onClick={closeMenu}>Gallery</a>
           <a href="#team" onClick={closeMenu}>Our team</a>
           <a className="nav-cta" href="#vision" onClick={closeMenu}>Our vision <ArrowUpRight size={17} /></a>
         </nav>
@@ -183,6 +212,37 @@ function App() {
         </div>
       </section>
 
+      <section className="institute-gallery" id="gallery">
+        <div className="gallery-heading section reveal" data-reveal>
+          <div>
+            <p className="eyebrow">Inside our institute</p>
+            <h2>Where learning becomes possibility.</h2>
+          </div>
+          <p>Step inside the classrooms, skills labs, and shared spaces where women learn, practice, connect, and prepare for independent futures.</p>
+        </div>
+
+        <div className="video-grid section">
+          {instituteVideos.map((video, index) => (
+            <figure className="video-story reveal" data-reveal style={{ '--reveal-delay': `${index * 100}ms` }} key={video.title}>
+              <video controls playsInline preload="metadata" poster={video.poster}>
+                <source src={video.src} type="video/mp4" />
+                Your browser does not support embedded video.
+              </video>
+              <figcaption><span>{String(index + 1).padStart(2, '0')}</span>{video.title}</figcaption>
+            </figure>
+          ))}
+        </div>
+
+        <div className="photo-mosaic section">
+          {institutePhotos.map((photo, index) => (
+            <figure className={`gallery-photo gallery-photo-${index + 1} reveal`} data-reveal style={{ '--reveal-delay': `${index % 4 * 80}ms` }} key={photo.src}>
+              <img src={photo.src} alt={photo.alt} loading="lazy" />
+              <figcaption><span>{String(index + 1).padStart(2, '0')}</span>{photo.caption}</figcaption>
+            </figure>
+          ))}
+        </div>
+      </section>
+
       <section className="team" id="team">
         <div className="team-heading section reveal" data-reveal>
           <div>
@@ -222,7 +282,7 @@ function App() {
             <a className="brand" href="#top"><span className="brand-mark"><Flower2 size={21} /></span><span>Bint-e-Hawa <small>Welfare Organization</small></span></a>
             <p>Empowering communities. Building self-reliance.</p>
           </div>
-          <div className="footer-links"><strong>Explore</strong><a href="#about">About us</a><a href="#programs">Programs</a><a href="#footprint">Our footprint</a><a href="#team">Our team</a><a href="#vision">Vision</a></div>
+          <div className="footer-links"><strong>Explore</strong><a href="#about">About us</a><a href="#programs">Programs</a><a href="#footprint">Our footprint</a><a href="#gallery">Gallery</a><a href="#team">Our team</a><a href="#vision">Vision</a></div>
           <div className="footer-registration"><strong>Government Registration</strong><span>DO/SWWD&amp;BM/RWP/2012-0183</span><span>Established 2012</span><span>Government of Pakistan</span></div>
         </div>
         <div className="footer-bottom section"><span>© 2026 Bint-e-Hawa Welfare Organization</span><span>Non-governmental / Non-profit</span></div>

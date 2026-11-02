@@ -26,6 +26,7 @@ button { font: inherit; }
 button, a { -webkit-tap-highlight-color: transparent; }
 a { color: inherit; }
 img { display: block; max-width: 100%; }
+video { display: block; max-width: 100%; }
 
 .section { width: min(1180px, calc(100% - 80px)); margin-inline: auto; }
 .eyebrow { margin: 0 0 18px; color: var(--coral-dark); font-size: .75rem; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; }
@@ -109,6 +110,26 @@ h2 { max-width: 760px; margin-bottom: 24px; font-size: clamp(2.5rem, 5vw, 4.7rem
 .reach-list span { color: var(--ink-soft); font-size: .86rem; }
 .reach-list strong { display: block; margin-bottom: 5px; color: var(--ink); font-family: var(--serif); font-size: 1.15rem; }
 
+.institute-gallery { padding-block: 112px 124px; overflow: hidden; color: white; background: var(--forest); }
+.gallery-heading { display: grid; margin-bottom: 58px; grid-template-columns: 1.45fr .75fr; align-items: end; gap: 80px; }
+.gallery-heading h2 { margin-bottom: 0; color: white; }
+.gallery-heading > p { margin-bottom: 7px; color: rgba(255,255,255,.68); line-height: 1.7; }
+.video-grid { display: grid; margin-bottom: 22px; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+.video-story { min-width: 0; margin: 0; }
+.video-story video { width: 100%; aspect-ratio: 9 / 14; object-fit: cover; background: #071b17; }
+.video-story figcaption, .gallery-photo figcaption { display: flex; padding-top: 15px; align-items: center; gap: 14px; color: rgba(255,255,255,.9); font-family: var(--serif); font-size: 1.05rem; }
+.video-story figcaption span, .gallery-photo figcaption span { color: var(--gold); font-family: var(--sans); font-size: .68rem; }
+.photo-mosaic { display: grid; margin-top: 70px; grid-template-columns: repeat(12, 1fr); gap: 42px 22px; }
+.gallery-photo { min-width: 0; margin: 0; }
+.gallery-photo img { width: 100%; height: 100%; object-fit: cover; transition: filter .4s ease, transform .55s cubic-bezier(.22, 1, .36, 1); }
+.gallery-photo > img { aspect-ratio: 4 / 3; }
+.gallery-photo:hover img { filter: saturate(1.08); transform: scale(1.018); }
+.gallery-photo-1, .gallery-photo-6 { grid-column: span 7; }
+.gallery-photo-2, .gallery-photo-5 { grid-column: span 5; }
+.gallery-photo-3, .gallery-photo-4, .gallery-photo-7 { grid-column: span 4; }
+.gallery-photo-8 { grid-column: span 4; }
+.gallery-photo-4 img, .gallery-photo-7 img, .gallery-photo-8 img { aspect-ratio: 3 / 4; }
+
 .team { padding-block: 112px 124px; background: var(--cream); }
 .team-heading { display: grid; margin-bottom: 56px; grid-template-columns: 1.45fr .75fr; align-items: end; gap: 80px; }
 .team-heading h2 { margin-bottom: 0; }
@@ -153,7 +174,7 @@ footer { color: white; background: #0b2621; }
   .hero-content { width: calc(100% - 44px); padding-bottom: 150px; }
   .hero h1 { font-size: clamp(4rem, 16vw, 7rem); }
   .registration-strip { padding-inline: 22px; }
-  .intro, .programs-heading, .footprint, .team-heading, .footer-main { grid-template-columns: 1fr; }
+  .intro, .programs-heading, .footprint, .gallery-heading, .team-heading, .footer-main { grid-template-columns: 1fr; }
   .intro { padding-block: 88px; gap: 36px; }
   .section-label { display: none; }
   .intro-promise { max-width: 360px; }
@@ -163,6 +184,12 @@ footer { color: white; background: #0b2621; }
   .program-item, .program-item:last-child { grid-column: auto; min-height: 0; }
   .footprint { padding-block: 90px; gap: 65px; }
   .footprint-image { max-width: 560px; }
+  .institute-gallery { padding-block: 84px 94px; }
+  .gallery-heading { gap: 16px; }
+  .video-grid { grid-template-columns: repeat(3, minmax(240px, 1fr)); overflow-x: auto; padding-bottom: 14px; scroll-snap-type: x mandatory; }
+  .video-story { scroll-snap-align: start; }
+  .photo-mosaic { margin-top: 56px; grid-template-columns: repeat(2, 1fr); }
+  .gallery-photo-1, .gallery-photo-2, .gallery-photo-3, .gallery-photo-4, .gallery-photo-5, .gallery-photo-6, .gallery-photo-7, .gallery-photo-8 { grid-column: span 1; }
   .team { padding-block: 84px 94px; }
   .team-heading { gap: 16px; }
   .team-grid { grid-template-columns: repeat(2, 1fr); gap: 38px 22px; }
@@ -187,6 +214,8 @@ footer { color: white; background: #0b2621; }
   .program-item { padding: 30px 24px 34px; }
   .program-meta { margin-bottom: 38px; }
   .footprint-image > span { font-size: .7rem; }
+  .photo-mosaic { grid-template-columns: 1fr; gap: 36px; }
+  .gallery-photo-4 img, .gallery-photo-7 img, .gallery-photo-8 img { aspect-ratio: 4 / 5; }
   .team-grid { grid-template-columns: 1fr; gap: 36px; }
   .team-member { width: 100%; }
   .vision { padding-block: 78px; }
